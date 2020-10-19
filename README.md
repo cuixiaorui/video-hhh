@@ -10,7 +10,7 @@
 
 > video-hhh
 
-可用于统计视频时长
+用于统计视频时长
 
 ### 🏠 [Homepage](https://github.com/cuixiaorui/koa-setup)
 
@@ -28,6 +28,7 @@ video-hhh "video-path"
 // 举个栗子
 video-hhh "./example/*.mp4"
 ```
+![usage](./assets/usage.png)
 
 > video-path 支持 [glob](https://www.npmjs.com/package/glob) 格式的路径
 
