@@ -6,8 +6,7 @@ const { getVideoDurationInSeconds } = require("get-video-duration");
 function toAbsolutePath(files) {
   const path = require("path");
   return files.map((file) => {
-    console.log(path.resolve(__dirname, file));
-    return path.resolve(__dirname, file);
+    return path.resolve(process.cwd(), file);
   });
 }
 
