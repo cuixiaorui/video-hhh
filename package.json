@@ -1,6 +1,6 @@
 {
   "name": "video-hhh",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The statistics of video time",
   "main": "index.js",
   "bin": "./bin/index.js",
