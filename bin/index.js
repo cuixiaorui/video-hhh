@@ -13,14 +13,18 @@ function toAbsolutePath(files) {
 async function calculateVideoTime(files) {
   let totalTime = 0;
   for (const file of files) {
-    const duration = await getVideoDurationInSeconds(file);
-    totalTime += duration;
+    try {
+      const duration = await getVideoDurationInSeconds(file);
+      totalTime += duration;
 
-    console.log(
-      chalk
-        .hex("#DEADED")
-        .bold(`${file}:\r\n`, formatDate(secondToHour(duration)))
-    );
+      console.log(
+        chalk
+          .hex("#DEADED")
+          .bold(`${file}:\r\n`, formatDate(secondToHour(duration)))
+      );
+    } catch (e) {
+      console.log(chalk.red(`这个 file: ${file} 不支持计算时长`));
+    }
   }
 
   return totalTime;
