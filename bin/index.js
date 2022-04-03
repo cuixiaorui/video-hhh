@@ -1,11 +1,17 @@
 #!/usr/bin/env node
-const chalk = require("chalk");
-const glob = require("glob");
-const { getVideoDurationInSeconds } = require("get-video-duration");
+// const chalk = require("chalk");
+// const glob = require("glob");
+// const { getVideoDurationInSeconds } = require("get-video-duration");
+
+import chalk from "chalk";
+import glob from "glob";
+import { getVideoDuration } from "./getVideoDuration.js";
+import path from 'path'
 
 function toAbsolutePath(files) {
-  const path = require("path");
   return files.map((file) => {
+    console.log(file);
+
     return path.resolve(process.cwd(), file);
   });
 }
@@ -14,7 +20,7 @@ async function calculateVideoTime(files) {
   let totalTime = 0;
   for (const file of files) {
     try {
-      const duration = await getVideoDurationInSeconds(file);
+      const duration = await getVideoDuration(file);
       totalTime += duration;
 
       console.log(
@@ -23,6 +29,7 @@ async function calculateVideoTime(files) {
           .bold(`${file}:\r\n`, formatDate(secondToHour(duration)))
       );
     } catch (e) {
+      console.log(e);
       console.log(chalk.red(`这个 file: ${file} 不支持计算时长`));
     }
   }
